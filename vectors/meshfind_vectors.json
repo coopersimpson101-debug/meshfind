@@ -1,0 +1,1061 @@
+{
+ "adv": [
+  {
+   "addr": "c38d78542f2f",
+   "battery": 0,
+   "payload": "1effffff416fc70519aab7854630956c8432c09c18e73b99037e25c17a9605",
+   "pub": "438d78542f2f6fc70519aab7854630956c8432c09c18e73b99037e25c17a9605",
+   "separated": false
+  },
+  {
+   "addr": "cb93ad034a80",
+   "battery": 1,
+   "payload": "1effffff910df8814c66a2925f7ab3ed016d5394c5f8c06b73b1442ea78972",
+   "pub": "8b93ad034a800df8814c66a2925f7ab3ed016d5394c5f8c06b73b1442ea78972",
+   "separated": false
+  },
+  {
+   "addr": "c19b254fd28b",
+   "battery": 2,
+   "payload": "1effffffa9f45d4ce0c05509521ee7f242d086e4074a529bbae7545c1d0031",
+   "pub": "819b254fd28bf45d4ce0c05509521ee7f242d086e4074a529bbae7545c1d0031",
+   "separated": true
+  },
+  {
+   "addr": "e74540296c59",
+   "battery": 3,
+   "payload": "1effffffb9ee1e5ad1c7ed53898133ee5e8bf31ebc580c14d2848ae6150c65",
+   "pub": "a74540296c59ee1e5ad1c7ed53898133ee5e8bf31ebc580c14d2848ae6150c65",
+   "separated": true
+  }
+ ],
+ "adv_interval": [
+  {
+   "ms": 2000,
+   "percent": 100,
+   "separated": false
+  },
+  {
+   "ms": 1000,
+   "percent": 100,
+   "separated": true
+  },
+  {
+   "ms": 2000,
+   "percent": 60,
+   "separated": false
+  },
+  {
+   "ms": 1000,
+   "percent": 60,
+   "separated": true
+  },
+  {
+   "ms": 2000,
+   "percent": 59,
+   "separated": false
+  },
+  {
+   "ms": 1000,
+   "percent": 59,
+   "separated": true
+  },
+  {
+   "ms": 2000,
+   "percent": 30,
+   "separated": false
+  },
+  {
+   "ms": 1000,
+   "percent": 30,
+   "separated": true
+  },
+  {
+   "ms": 4000,
+   "percent": 29,
+   "separated": false
+  },
+  {
+   "ms": 2000,
+   "percent": 29,
+   "separated": true
+  },
+  {
+   "ms": 4000,
+   "percent": 10,
+   "separated": false
+  },
+  {
+   "ms": 2000,
+   "percent": 10,
+   "separated": true
+  },
+  {
+   "ms": 8000,
+   "percent": 9,
+   "separated": false
+  },
+  {
+   "ms": 4000,
+   "percent": 9,
+   "separated": true
+  },
+  {
+   "ms": 8000,
+   "percent": 0,
+   "separated": false
+  },
+  {
+   "ms": 4000,
+   "percent": 0,
+   "separated": true
+  }
+ ],
+ "aead": [
+  {
+   "aad": "50515253c0c1c2c3c4c5c6c7",
+   "ct": "d31a8d34648e60db7b86afbc53ef7ec2a4aded51296e08fea9e2b5a736ee62d63dbea45e8ca9671282fafb69da92728b1a71de0a9e060b2905d6a5b67ecd3b3692ddbd7f2d778b8c9803aee328091b58fab324e4fad675945585808b4831d7bc3ff4def08e4b7a9de576d26586cec64b61161ae10b594f09e26a7e902ecbd0600691",
+   "key": "808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f",
+   "nonce": "070000004041424344454647",
+   "pt": "4c616469657320616e642047656e746c656d656e206f662074686520636c617373206f66202739393a204966204920636f756c64206f6666657220796f75206f6e6c79206f6e652074697020666f7220746865206675747572652c2073756e73637265656e20776f756c642062652069742e"
+  },
+  {
+   "aad": "",
+   "ct": "4eb972c9a8fb3a1b382bb4d36f5ffad1",
+   "key": "0000000000000000000000000000000000000000000000000000000000000000",
+   "nonce": "000000000000000000000000",
+   "pt": ""
+  }
+ ],
+ "epoch_index": [
+  {
+   "epoch0": 1767225600,
+   "index": 0,
+   "seconds": 900,
+   "t": 1767225600
+  },
+  {
+   "epoch0": 1767225600,
+   "index": 0,
+   "seconds": 900,
+   "t": 1767226499
+  },
+  {
+   "epoch0": 1767225600,
+   "index": 1,
+   "seconds": 900,
+   "t": 1767226500
+  },
+  {
+   "epoch0": 1767225600,
+   "index": 288,
+   "seconds": 900,
+   "t": 1767484801
+  }
+ ],
+ "hkdf": [
+  {
+   "ikm": "0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b",
+   "info": "f0f1f2f3f4f5f6f7f8f9",
+   "length": 42,
+   "okm": "3cb25f25faacd57a90434f64d0362f2a2d2d0a90cf1a5a4c5db02d56ecc4c5bf34007208d5b887185865",
+   "salt": "000102030405060708090a0b0c"
+  },
+  {
+   "ikm": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+   "info": "6d65736866696e642f76312f636861696e2d696e6974",
+   "length": 32,
+   "okm": "f72fd9386870425dc42c358848a07e534288ac6612146af528f181cadb3319c0",
+   "salt": ""
+  }
+ ],
+ "mesh_forward": [
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 0,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 1,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 2,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": true,
+   "is_gateway": false,
+   "my_dist": 255,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 0,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 1,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 2,
+   "sender_dist": 255,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 0,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 0,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 0,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 1,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 1,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 1,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 2,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 2,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 2,
+   "ttl": 2
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 255,
+   "ttl": 0
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 255,
+   "ttl": 1
+  },
+  {
+   "forward": false,
+   "is_gateway": true,
+   "my_dist": 255,
+   "sender_dist": 255,
+   "ttl": 2
+  }
+ ],
+ "mesh_frames": [
+  {
+   "encoded": "4d110a03d4f627cf77a669f601001ab8535620f16b389f9d930ccae61bbe2c060ed00930201991fbe03b4e14a0d18d42b651e2e208b3505e1d01880dfe4d64a592ad01ac8ccaf1d38d7811bf94483651d4b25f459595719bed08d38540f21ba5eb7b041eb270dbbe6cdd4c7015413d1ce45e336191aec68f",
+   "msg_id": "d4f627cf77a669f6",
+   "payload": "01001ab8535620f16b389f9d930ccae61bbe2c060ed00930201991fbe03b4e14a0d18d42b651e2e208b3505e1d01880dfe4d64a592ad01ac8ccaf1d38d7811bf94483651d4b25f459595719bed08d38540f21ba5eb7b041eb270dbbe6cdd4c7015413d1ce45e336191aec68f",
+   "sender_dist": 3,
+   "ttl": 10,
+   "type": 1
+  },
+  {
+   "encoded": "4d121000d69bdb3a3a2a6e7b070000002a00000005b95569",
+   "msg_id": "d69bdb3a3a2a6e7b",
+   "payload": "070000002a00000005b95569",
+   "sender_dist": 0,
+   "ttl": 16,
+   "type": 2
+  },
+  {
+   "encoded": "4d130100d4f627cf77a669f6",
+   "msg_id": "d4f627cf77a669f6",
+   "payload": "",
+   "sender_dist": 0,
+   "ttl": 1,
+   "type": 3
+  }
+ ],
+ "ratchet": {
+  "epoch0": 1767225600,
+  "epoch_seconds": 900,
+  "epochs": [
+   {
+    "hash": "1ab8535620f16b389f9d930ccae61bbe2c060ed00930201991fbe03b4e14a0d1",
+    "index": 0,
+    "priv": "88a11d8f31549c421e3c38fd1bfbb2c94753e9999a474fb3a197cb1e4212f166",
+    "pub": "438d78542f2f6fc70519aab7854630956c8432c09c18e73b99037e25c17a9605",
+    "sk": "f72fd9386870425dc42c358848a07e534288ac6612146af528f181cadb3319c0"
+   },
+   {
+    "hash": "686a8c272b313b7675e2f622b08a7de92273872096bcb2fddcc8b97de6f3f49a",
+    "index": 1,
+    "priv": "f8aa51ddcb94fbd98b09be089ff8f226f2e26f84c53630e6cd0dd241e49b436b",
+    "pub": "8b93ad034a800df8814c66a2925f7ab3ed016d5394c5f8c06b73b1442ea78972",
+    "sk": "44d235af5b2f62d64a1784d8446c0d4a6947ba20d7c2c54ede476cf7c302bc22"
+   },
+   {
+    "hash": "a720849dcea48f14969285574d6d9ddb2a20edee82f83717fd642c3bb2887f97",
+    "index": 2,
+    "priv": "a05c9c44662187abecd6c2c60986ae31f644c94b28a81ffab590b2b09bd77a72",
+    "pub": "819b254fd28bf45d4ce0c05509521ee7f242d086e4074a529bbae7545c1d0031",
+    "sk": "e1c421a4e2402057a24e819dde8d576891de72e7b6f92918328f65eaeb9f2253"
+   },
+   {
+    "hash": "150616f3decae539b67ca3b36f15f1e3a47abd748c3849b0d482ebb53aa7d1a9",
+    "index": 3,
+    "priv": "48a157475a54b0510097772a8a3dd8b8c6095c9307e636595597850f35cfd47f",
+    "pub": "a74540296c59ee1e5ad1c7ed53898133ee5e8bf31ebc580c14d2848ae6150c65",
+    "sk": "afaff3c3093d223c1e85d36ef1eee71cc03450cd23c06e51eff5232a764f35a6"
+   },
+   {
+    "hash": "4e27d3172f1bfa6001b9e0f5788794957b2b8bd86315eb13ae459b958b1582b2",
+    "index": 95,
+    "priv": "f035ef778916d2cd3224a5c8445e6b067d6d2a12f2fc92a6c624c2013fa77473",
+    "pub": "c43c87006400640fa9595318990f0bc9416f6555f461f9fa5ba31b256c797e17",
+    "sk": "b8765c2ebc1572742c328a578cc1d8bca01091a8b216b5f6a3c264e0e362c4cb"
+   },
+   {
+    "hash": "6b8c1758db840b89bd7c2518897c7c8f1a70deefe730ba112325daa3abcd544d",
+    "index": 96,
+    "priv": "300dfd988979f9e3cddb67c2dd653ba2e0858baea00d6fe12c0b482cf5827b62",
+    "pub": "b356e470ec89f5b8903fd823e565c6eb9bc52dccf53c712bab4aca8e53c30566",
+    "sk": "d5c071462fd63b4c661b3b7d43db81615e3ec98dee37b820f38d04da0d2c291e"
+   },
+   {
+    "hash": "09941574115a381ee2bf7c11cc29453e5fe9072676e43a6f7dbb547c5e6f3947",
+    "index": 97,
+    "priv": "d8872da7911a200d647d2dada94c480497382aaf1754084b3a0784261fd99a62",
+    "pub": "a502052d7b6b8852a442a558f4ccd62036f5317b33b957afc6e475e2fcfac719",
+    "sk": "cd0da7820b2504c481913dfac703a4c7615ac9404c48a072da7750e7df729530"
+   },
+   {
+    "hash": "68f93e4d7294e716b87bf093bced91f1922ac4fbef6f81d34e240cd5e7cac561",
+    "index": 500,
+    "priv": "00e7a37f64516d6a1f6097e81a24510ff9496b642bc50183ba7de7c8cc235d47",
+    "pub": "953147587adcab622ec3db4d337aa1f6ce8046fb722008609fe604b9c5a67964",
+    "sk": "ce1767994a9107ee4af0011003285fc43d5333fc37f3149f0d4084ef1ac7faa6"
+   }
+  ],
+  "master": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "presence": [
+   {
+    "adv": "14ffffff508c793295ce850a7deca2418bf9b0ff6f",
+    "epoch": 0,
+    "token": "8c793295ce850a7deca2418bf9b0ff6f"
+   },
+   {
+    "adv": "14ffffff503f4b174d48a8f28beb66a376bdb76dd1",
+    "epoch": 1,
+    "token": "3f4b174d48a8f28beb66a376bdb76dd1"
+   },
+   {
+    "adv": "14ffffff50cfe90800b458e62680a84b18b6b1c7e5",
+    "epoch": 1000,
+    "token": "cfe90800b458e62680a84b18b6b1c7e5"
+   }
+  ],
+  "presence_key": "1a54fd4ad818beacac4810a2d78375afe8b0dc37d9f917205a27809588195b0d",
+  "separated": [
+   {
+    "hash": "ab062256a1e6cd3433ae730415a7ab7227f46a12d5b489460b9602b39e2b77da",
+    "index": 0,
+    "priv": "78381e8f92ea4096a7faba7f77466ef431e2272827ef47d8089c176a6ab40562",
+    "pub": "53797e30c49b0e79db99856b38adf93db9c090805f9406e87b794c478fdcf55b",
+    "sk": "df18cb9a23409752b3591df32e764f8eaa772c2fc759463a6c7521ab4232f899"
+   },
+   {
+    "hash": "408da33b54a614f45f9ffdc5fb2c378766cc6f77797ccd58d9a25c70aebe21f0",
+    "index": 1,
+    "priv": "206e062881406785ec033365eefdce9887ec0577d6b0221a7170f3c7906b1f54",
+    "pub": "85ccb9efa15d3aa8b3f06f0951f0ef254a294142b4c004d653a56e5fc92dd86f",
+    "sk": "57fd7474009727c6bf905ab5c4065a76b7d6ecd6f8527b9e1f811ac13099560a"
+   },
+   {
+    "hash": "adc6a89991c10878af0f9214f8eabbb70e4ee9d3ad16bf74fefeadcff271cfa8",
+    "index": 2,
+    "priv": "e842ed42b118aaf37acd745c27dd09162cd0f0cf6b9293497cd5cdce2798ea79",
+    "pub": "47ca0794a94c33961a54739bb4e82d904fb64f6822157722555b2d45e799e079",
+    "sk": "408baeea8364f8343dd52bb3d06d976913f0c900b5c802a813aa5156e60e5c86"
+   },
+   {
+    "hash": "85784b7162a89f071c58f39d747bf1d9dc71a2f479de4c20d8fb9f2d34def71a",
+    "index": 30,
+    "priv": "382b3da6584ebb91a2f7ba15e4eb94b5719301c73deb0ae7dd2c573ca9f74769",
+    "pub": "f981881ec1fc6b04ac4b178c7c7cc028bd710c2c66a9030c35baafb4fec1116a",
+    "sk": "db62c064f55dd09653e4ed71231c38f375bc20f4df3c595999536d9b88a28db7"
+   }
+  ]
+ },
+ "report": [
+  {
+   "accuracy_cm": 50,
+   "envelope": "01001ab8535620f16b389f9d930ccae61bbe2c060ed00930201991fbe03b4e14a0d18d42b651e2e208b3505e1d01880dfe4d64a592ad01ac8ccaf1d38d7811bf94483651d4b25f459595719bed08d38540f21ba5eb7b041eb270dbbe6cdd4c7015413d1ce45e336191aec68f",
+   "eph_secret": "43f4d9ea818851076c0f84474b9d1f9219481f41ccbc2acaec6730b2b85a9f6f",
+   "flags": 3,
+   "node_id": 4096,
+   "plaintext": "010311b95569001000002efbffff2e1600002c0100003200ba11",
+   "rssi": -70,
+   "seen_ts": 1767225617,
+   "tag_priv": "88a11d8f31549c421e3c38fd1bfbb2c94753e9999a474fb3a197cb1e4212f166",
+   "tag_pub": "438d78542f2f6fc70519aab7854630956c8432c09c18e73b99037e25c17a9605",
+   "tag_status": 17,
+   "x": -1234,
+   "y": 5678,
+   "z": 300
+  },
+  {
+   "accuracy_cm": 50,
+   "envelope": "0100686a8c272b313b7675e2f622b08a7de92273872096bcb2fddcc8b97de6f3f49af44eeedf2c031395d60189e9edcd14b5cd385281e2d9bf0ebdad66e10ac7c059c099a1c91b28778234c4d98aed14464e42aed0338c3f7b7cc5f2e07fcf01a3128a8611dc262f7961a552",
+   "eph_secret": "4918baa6459f1dc27825013b4f37cf4041647d1c9a23871a0d4078cd927b9dd2",
+   "flags": 3,
+   "node_id": 4097,
+   "plaintext": "010395bc5569011000005cf6ffff2f1600002c0100003200b912",
+   "rssi": -71,
+   "seen_ts": 1767226517,
+   "tag_priv": "f8aa51ddcb94fbd98b09be089ff8f226f2e26f84c53630e6cd0dd241e49b436b",
+   "tag_pub": "8b93ad034a800df8814c66a2925f7ab3ed016d5394c5f8c06b73b1442ea78972",
+   "tag_status": 18,
+   "x": -2468,
+   "y": 5679,
+   "z": 300
+  },
+  {
+   "accuracy_cm": 50,
+   "envelope": "0100a720849dcea48f14969285574d6d9ddb2a20edee82f83717fd642c3bb2887f97f5d35962f364c97390b95e10880cf26e2302426bd3f1c4e55a75b731ea29603836b2698796c6191a3b023d07ceb20043f6195cec1b729d7a9c66088da19b8e352008bab4c461bc524a86",
+   "eph_secret": "b6b215dd3c3a8145949308d3da546235e54fa89eb53cd400b87080d230bf87a9",
+   "flags": 3,
+   "node_id": 4098,
+   "plaintext": "010319c05569021000008af1ffff301600002c0100003200b813",
+   "rssi": -72,
+   "seen_ts": 1767227417,
+   "tag_priv": "a05c9c44662187abecd6c2c60986ae31f644c94b28a81ffab590b2b09bd77a72",
+   "tag_pub": "819b254fd28bf45d4ce0c05509521ee7f242d086e4074a529bbae7545c1d0031",
+   "tag_status": 19,
+   "x": -3702,
+   "y": 5680,
+   "z": 300
+  }
+ ],
+ "sha256": [
+  {
+   "digest": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+   "msg": "616263"
+  },
+  {
+   "digest": "5340dcd9ad040ecd0977beb206ae966657bf7077aa1e05f1146d83e3a8abdf49",
+   "msg": "6d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e646d65736866696e64"
+  }
+ ],
+ "version": 1,
+ "x25519": [
+  {
+   "out": "c3da55379de9c6908e94ea4df28d084f32eccf03491c71f754b4075577a28552",
+   "scalar": "a546e36bf0527c9d3b16154b82465edd62144c0ac1fc5a18506a2244ba449ac4",
+   "u": "e6db6867583030db3594c1a424b15f7c726624ec26b3353b10a903a6d0ab1c4c"
+  },
+  {
+   "out": "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e6a",
+   "scalar": "77076d0a7318a57d3c16c17251b26645df4c2f87ebc0992ab177fba51db92c2a",
+   "u": "0900000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+   "out": "4a5d9d5ba4ce2de1728e3bf480350f25e07e21c947d19e3376f09b3c1e161742",
+   "scalar": "5dab087e624a8a4b79e17f8b83800ee66f3bb1292618b6fd1c2f8b27ff88e0eb",
+   "u": "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e6a"
+  }
+ ]
+}

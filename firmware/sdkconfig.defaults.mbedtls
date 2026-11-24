@@ -1,0 +1,7 @@
+# Append to a project's SDKCONFIG_DEFAULTS to build with the mbedTLS backend:
+#   idf.py -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;../sdkconfig.defaults.mbedtls" build
+CONFIG_MESHFIND_CRYPTO_MBEDTLS=y
+CONFIG_MBEDTLS_CHACHA20_C=y
+CONFIG_MBEDTLS_POLY1305_C=y
+CONFIG_MBEDTLS_CHACHAPOLY_C=y
+CONFIG_MBEDTLS_ECP_DP_CURVE25519_ENABLED=y

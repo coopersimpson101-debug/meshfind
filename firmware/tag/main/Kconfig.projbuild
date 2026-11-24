@@ -1,0 +1,54 @@
+menu "meshfind tag"
+
+    config MESHFIND_TAG_SK0
+        string "Near-owner chain seed SK_0 (64 hex chars)"
+        default ""
+        help
+            From `python -m meshfind tag provision tag.json`. Empty = tag
+            refuses to advertise. Copied to NVS on first boot.
+
+    config MESHFIND_TAG_SEP_SK0
+        string "Separated chain seed (64 hex chars)"
+        default ""
+
+    config MESHFIND_TAG_PRESENCE_KEY
+        string "Owner-presence key (64 hex chars)"
+        default ""
+
+    config MESHFIND_TAG_EPOCH0
+        int "Provisioning time, unix seconds (epoch 0 start)"
+        default 0
+        help
+            Also used as the initial wall clock on first boot: flash the tag
+            right after running `meshfind tag provision`.
+
+    config MESHFIND_TAG_EPOCH_SECONDS
+        int "Key rotation period in seconds"
+        default 900
+
+    config MESHFIND_TAG_SEPARATED_AFTER_MIN
+        int "Enter separated mode after this many minutes without the owner"
+        default 480
+
+    config MESHFIND_TAG_PRESENCE_SCAN_PERIOD_S
+        int "Seconds between short scans for the owner-presence beacon (0 = never)"
+        default 60
+
+    config MESHFIND_TAG_BATTERY_ADC_CHANNEL
+        int "ADC1 channel wired to the battery divider (-1 = no battery sensing)"
+        default -1
+        range -1 9
+
+    config MESHFIND_TAG_BATTERY_DIVIDER_X10
+        int "Battery divider ratio x10 (20 = 1:1 divider)"
+        default 20
+
+    config MESHFIND_TAG_BATTERY_MV_EMPTY
+        int "Battery millivolts considered empty"
+        default 3300
+
+    config MESHFIND_TAG_BATTERY_MV_FULL
+        int "Battery millivolts considered full"
+        default 4150
+
+endmenu

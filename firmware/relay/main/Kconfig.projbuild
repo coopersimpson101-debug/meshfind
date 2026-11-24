@@ -1,0 +1,40 @@
+menu "meshfind relay"
+
+    config MESHFIND_IS_GATEWAY
+        bool "This node is a gateway (prints MFRPT lines on the console UART)"
+        default n
+
+    config MESHFIND_NODE_ID
+        hex "Node id (0 = derive from the Wi-Fi MAC)"
+        default 0x0
+
+    config MESHFIND_POS_LOCAL_FRAME
+        bool "Position is in a site-local frame (centimetres); otherwise WGS84 *1e7"
+        default y
+
+    config MESHFIND_NODE_X
+        int "Node X (cm, or latitude*1e7)"
+        default 0
+
+    config MESHFIND_NODE_Y
+        int "Node Y (cm, or longitude*1e7)"
+        default 0
+
+    config MESHFIND_NODE_Z
+        int "Node Z (cm)"
+        default 0
+
+    config MESHFIND_NODE_ACCURACY_CM
+        int "Installed-position accuracy (cm)"
+        default 50
+
+    config MESHFIND_ESPNOW_CHANNEL
+        int "Wi-Fi channel used by the ESP-NOW mesh"
+        default 1
+        range 1 13
+
+    config MESHFIND_AGGREGATE_MS
+        int "Aggregate sightings of one key for this long before sealing a report"
+        default 10000
+
+endmenu

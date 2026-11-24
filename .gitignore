@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+build/
+dist/
+
+# meshfind runtime artefacts -- tag files hold master secrets!
+*.db
+*.sqlite
+tag*.json
+!vectors/*.json
+*.svg
+
+# C host test
+firmware/common/test/mf_host_test
+firmware/common/test/mf_host_test.exe
+*.o
+*.obj
+*.pdb
+
+# ESP-IDF
+firmware/*/build/
+firmware/*/sdkconfig
+firmware/*/sdkconfig.old
+firmware/*/managed_components/
+firmware/*/dependencies.lock

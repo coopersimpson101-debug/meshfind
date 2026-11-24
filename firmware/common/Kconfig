@@ -1,0 +1,15 @@
+menu "meshfind core"
+
+    config MESHFIND_CRYPTO_MBEDTLS
+        bool "Use mbedTLS for SHA-256 / ChaCha20-Poly1305 / X25519"
+        default n
+        help
+            By default the portable reference implementation (the exact code
+            that is vector-tested on the host) is used. Enabling this uses the
+            mbedTLS shipped with ESP-IDF instead (hardware SHA). It requires
+            CONFIG_MBEDTLS_CHACHA20_C, CONFIG_MBEDTLS_POLY1305_C,
+            CONFIG_MBEDTLS_CHACHAPOLY_C and
+            CONFIG_MBEDTLS_ECP_DP_CURVE25519_ENABLED (see
+            sdkconfig.defaults.mbedtls). Not yet validated on hardware.
+
+endmenu

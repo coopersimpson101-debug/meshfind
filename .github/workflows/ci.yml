@@ -1,0 +1,59 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[test]"
+      - name: Vectors are up to date
+        run: |
+          python -m meshfind vectors > /tmp/v.json
+          diff -u vectors/meshfind_vectors.json /tmp/v.json
+      - name: Python + C-vs-Python tests
+        run: CC=gcc python -m pytest -q
+
+  c-host:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build + run firmware/common against the vectors (ASan/UBSan)
+        run: make -C firmware/common/test CC=${{ matrix.cc }} SAN=1
+
+  esp-idf:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: tag
+            target: esp32c3
+            defaults: sdkconfig.defaults
+          - project: relay
+            target: esp32
+            defaults: sdkconfig.defaults
+          - project: relay
+            target: esp32
+            defaults: sdkconfig.defaults;../sdkconfig.defaults.mbedtls
+    steps:
+      - uses: actions/checkout@v4
+      - name: idf.py build (${{ matrix.project }}, ${{ matrix.defaults }})
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.2.2
+          target: ${{ matrix.target }}
+          path: firmware/${{ matrix.project }}
+          command: idf.py -D SDKCONFIG_DEFAULTS="${{ matrix.defaults }}" build
