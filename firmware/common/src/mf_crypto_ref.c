@@ -247,7 +247,7 @@ static void poly1305_finish(poly1305_t *st, uint8_t mac[16])
     g1 = h1 + c; c = g1 >> 26; g1 &= 0x3ffffff;
     g2 = h2 + c; c = g2 >> 26; g2 &= 0x3ffffff;
     g3 = h3 + c; c = g3 >> 26; g3 &= 0x3ffffff;
-    g4 = h4 + c - (1UL << 26);
+    g4 = h4 + c - ((uint32_t)1 << 26);
     mask = (g4 >> 31) - 1;
     g0 &= mask; g1 &= mask; g2 &= mask; g3 &= mask; g4 &= mask;
     mask = ~mask;
