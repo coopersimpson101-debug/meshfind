@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="350" viewBox="0 0 1180 350" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+<rect width="1180" height="350" rx="10" fill="#0d1117"/>
+<text x="24" y="34" fill="#e6edf3" font-size="17" font-weight="bold">BLE address (6 B, static random: top bits 11)</text>
+<rect x="24" y="48" width="356" height="34" rx="4" fill="#A78BFA" fill-opacity="0.18" stroke="#A78BFA"/>
+<text x="30" y="70" fill="#e6edf3" font-size="13">d7c3b6cac82e</text>
+<text x="26" y="100" fill="#A78BFA" font-size="12">P[0]|0xC0 ‖ P[1..5]</text>
+<text x="26" y="116" fill="#8b949e" font-size="11">6 B</text>
+<text x="24" y="144" fill="#e6edf3" font-size="17" font-weight="bold">Legacy advertisement payload: 31 bytes (ADV_NONCONN_IND)</text>
+<rect x="24" y="158" width="46" height="34" rx="4" fill="#8b949e" fill-opacity="0.18" stroke="#8b949e"/>
+<text x="30" y="180" fill="#e6edf3" font-size="13">1e</text>
+<text x="26" y="210" fill="#8b949e" font-size="12">len</text>
+<text x="26" y="226" fill="#8b949e" font-size="11">1 B</text>
+<rect x="74" y="158" width="46" height="34" rx="4" fill="#8b949e" fill-opacity="0.18" stroke="#8b949e"/>
+<text x="80" y="180" fill="#e6edf3" font-size="13">ff</text>
+<text x="76" y="210" fill="#8b949e" font-size="12">type</text>
+<text x="76" y="226" fill="#8b949e" font-size="11">1 B</text>
+<rect x="124" y="158" width="64" height="34" rx="4" fill="#8b949e" fill-opacity="0.18" stroke="#8b949e"/>
+<text x="130" y="180" fill="#e6edf3" font-size="13">ffff</text>
+<text x="126" y="210" fill="#8b949e" font-size="12">company</text>
+<text x="126" y="226" fill="#8b949e" font-size="11">2 B</text>
+<rect x="192" y="158" width="46" height="34" rx="4" fill="#f0883e" fill-opacity="0.18" stroke="#f0883e"/>
+<text x="198" y="180" fill="#e6edf3" font-size="13">81</text>
+<text x="194" y="210" fill="#f0883e" font-size="12">status</text>
+<text x="194" y="226" fill="#8b949e" font-size="11">1 B</text>
+<rect x="242" y="158" width="880" height="34" rx="4" fill="#A78BFA" fill-opacity="0.18" stroke="#A78BFA"/>
+<text x="248" y="180" fill="#e6edf3" font-size="13">3870b7283d5b1095a690065de8ed8f0f14a1102f78454fe79066</text>
+<text x="244" y="210" fill="#A78BFA" font-size="12">P[6..31]  (rest of the X25519 key)</text>
+<text x="244" y="226" fill="#8b949e" font-size="11">26 B</text>
+<text x="24" y="254" fill="#e6edf3" font-size="17" font-weight="bold">Encrypted report envelope: 108 bytes (relay → mesh → server)</text>
+<rect x="24" y="268" width="46" height="34" rx="4" fill="#8b949e" fill-opacity="0.18" stroke="#8b949e"/>
+<text x="30" y="290" fill="#e6edf3" font-size="13">01</text>
+<text x="26" y="320" fill="#8b949e" font-size="12">ver</text>
+<text x="26" y="336" fill="#8b949e" font-size="11">1 B</text>
+<rect x="74" y="268" width="46" height="34" rx="4" fill="#8b949e" fill-opacity="0.18" stroke="#8b949e"/>
+<text x="80" y="290" fill="#e6edf3" font-size="13">00</text>
+<text x="76" y="320" fill="#8b949e" font-size="12">flg</text>
+<text x="76" y="336" fill="#8b949e" font-size="11">1 B</text>
+<rect x="124" y="268" width="309.6" height="34" rx="4" fill="#3fb950" fill-opacity="0.18" stroke="#3fb950"/>
+<text x="130" y="290" fill="#e6edf3" font-size="13">776647c30c6908c6b387bad5359b2cab0b…</text>
+<text x="126" y="320" fill="#3fb950" font-size="12">SHA-256(P)  index</text>
+<text x="126" y="336" fill="#8b949e" font-size="11">32 B</text>
+<rect x="437.6" y="268" width="309.6" height="34" rx="4" fill="#A78BFA" fill-opacity="0.18" stroke="#A78BFA"/>
+<text x="443.6" y="290" fill="#e6edf3" font-size="13">13be4feaeaf204c7fd3358fc9c00721881…</text>
+<text x="439.6" y="320" fill="#A78BFA" font-size="12">E  ephemeral X25519</text>
+<text x="439.6" y="336" fill="#8b949e" font-size="11">32 B</text>
+<rect x="751.2" y="268" width="250.8" height="34" rx="4" fill="#f0883e" fill-opacity="0.18" stroke="#f0883e"/>
+<text x="757.2" y="290" fill="#e6edf3" font-size="13">174217ab09fbe4719028e804aa6…</text>
+<text x="753.2" y="320" fill="#f0883e" font-size="12">ChaCha20 ciphertext (26 B sighting)</text>
+<text x="753.2" y="336" fill="#8b949e" font-size="11">26 B</text>
+<rect x="1006.0" y="268" width="152.8" height="34" rx="4" fill="#f778ba" fill-opacity="0.18" stroke="#f778ba"/>
+<text x="1012.0" y="290" fill="#e6edf3" font-size="13">67d3f0e57049a11f…</text>
+<text x="1008.0" y="320" fill="#f778ba" font-size="12">Poly1305 tag</text>
+<text x="1008.0" y="336" fill="#8b949e" font-size="11">16 B</text>
+<text x="24" y="354" fill="#8b949e" font-size="12">bytes produced by meshfind.adv.encode() and meshfind.report.seal() for a fixed demo key (docs/assets/make_figures.py)</text>
+</svg>

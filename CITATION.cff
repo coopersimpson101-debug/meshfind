@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "meshfind: offline, end-to-end encrypted Find-My network over an ESP32 mesh"
+authors:
+  - name: "the meshfind authors"
+repository-code: "https://github.com/coopersimpson101-debug/meshfind"
+license: MIT
+abstract: >-
+  An offline, end-to-end encrypted crowd-sourced finding network for DIY BLE trackers, relayed over an ESP32 ESP-NOW mesh: rotating X25519 keys from a one-way HKDF ratchet, ECIES location reports with ChaCha20-Poly1305, gradient mesh routing, indoor trilateration and anti-stalking detection, with a Python reference implementation and a byte-identical portable C core.
+keywords:
+  - BLE
+  - ESP32
+  - mesh networking
+  - cryptography
+  - X25519
+  - privacy
+  - offline finding
+  - anti-stalking

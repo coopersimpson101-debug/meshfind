@@ -1,18 +1,108 @@
-# meshfind
+<p align="center">
+  <img src="docs/assets/banner.svg" alt="meshfind: offline, end-to-end encrypted Find-My for DIY trackers over an ESP32 mesh" width="100%">
+</p>
 
-**An offline, end-to-end encrypted "Find My" network for your own DIY
-trackers, relayed over an ESP32 mesh.**
+<p align="center">
+  <a href="https://github.com/coopersimpson101-debug/meshfind/actions/workflows/ci.yml"><img src="https://github.com/coopersimpson101-debug/meshfind/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/python-3.10%20%7C%203.12-3776AB?logo=python&logoColor=white" alt="Python 3.10 | 3.12">
+  <img src="https://img.shields.io/badge/C99-portable%20core-555555" alt="C99 core">
+  <img src="https://img.shields.io/badge/ESP--IDF-v5.2-E7352C?logo=espressif&logoColor=white" alt="ESP-IDF v5.2">
+  <img src="https://img.shields.io/badge/crypto-X25519%20%C2%B7%20ChaCha20--Poly1305-A78BFA" alt="X25519, ChaCha20-Poly1305">
+  <img src="https://img.shields.io/badge/hardware-not%20yet%20tested-lightgrey" alt="hardware: not yet tested">
+</p>
 
-Put a €3 ESP32-C3 tag on your keys, bike or toolbox. Fixed ESP32 nodes
-around your house, workshop or campus hear it and seal an encrypted
-location report that only *you* can open. The reports hop node to node over
-ESP-NOW to any gateway. There is no cloud, no phone vendor, and no
-internet connection on the tag side. The relays learn nothing, the server
-learns nothing, and keys rotate every 15 minutes so passers-by cannot track
-the tag. Someone being followed by a meshfind tag gets a warning.
+**Put a €3 ESP32-C3 tag on your keys, bike or toolbox. Fixed ESP32 relays hear it, seal a location
+report that only you can decrypt, and pass it hop by hop over ESP-NOW to a gateway. There is no cloud,
+no phone vendor and no internet connection on the tag side.**
 
-meshfind combines protocol design, cryptography and hardware in one
-project:
+<p align="center">
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="#how-it-works">How it works</a> ·
+  <a href="#results-all-on-the-host-all-simulated">Results</a> ·
+  <a href="#roadmap">Roadmap</a> ·
+  <a href="docs/PROTOCOL.md">Protocol spec</a> ·
+  <a href="docs/THREAT_MODEL.md">Threat model</a>
+</p>
+
+<p align="center">
+  <img src="docs/assets/sim_map.svg" alt="Owner-side map from the simulated building: relay sightings, true tag position (+) and trilaterated estimate (x)" width="720"><br>
+  <img src="docs/assets/simulate_terminal.svg" alt="Terminal output of python -m meshfind simulate --seed 3" width="720"><br>
+  <sub>Real output of <code>python -m meshfind simulate --seed 3 --svg …</code>. In a simulated 50 × 30 m
+  building, 24 relays hear the tag, all 24 encrypted reports cross the mesh, and the owner decrypts them and
+  trilaterates to within 2.28 m. Regenerate with <a href="docs/assets/make_figures.py"><code>docs/assets/make_figures.py</code></a>.</sub>
+</p>
+
+## Highlights
+
+- 🔑 **Its own protocol, in 31 bytes**: a 32-byte X25519 key split across the BLE static-random address and
+  a legacy advertisement, rotated every 15 minutes by a one-way HKDF ratchet (forward secret).
+- ✉️ **108-byte ECIES reports** (X25519 + HKDF-SHA256 + ChaCha20-Poly1305): relays, gateways and the server
+  only ever see ciphertext indexed by `SHA-256(P_i)`.
+- 🕸️ **Store-and-forward ESP-NOW mesh** with gradient routing, TTL, dedup, passive acks and rate limiting:
+  **99.87 % / 99.61 % / 99.08 %** delivery at 10 / 20 / 30 % per-link loss (simulated, 20 topologies).
+- 📍 **Indoor positioning** by maximum-likelihood trilateration on known relay positions: **1.13 m median**
+  error over 100 simulated tag positions.
+- 🛡️ **Anti-stalking**: a separated mode on the tag, plus a scanner-side detector that stitches rotating keys.
+  It caught the stalker on **200/200** simulated days.
+- 🧪 **Two implementations, one truth**: the Python reference and the portable C99 firmware core agree byte for
+  byte on a shared vector file (**659 C checks**, **126 Python tests**). CI runs the C core under ASan/UBSan.
+- 🔧 **ESP-IDF firmware** for the tag (ESP32-C3) and the relay/gateway (ESP32, reference or mbedTLS crypto),
+  built in CI on every push.
+
+## Quickstart
+
+```bash
+git clone https://github.com/coopersimpson101-debug/meshfind && cd meshfind
+pip install -e ".[test]"
+python -m pytest -q                                   # 126 tests, incl. the C core vs the Python vectors
+python -m meshfind simulate --seed 3 --svg map.svg    # tag -> relays -> mesh -> server -> owner
+python tools/host_test.py                             # C core on the host (uses $CC, ziglang or cc)
+```
+
+## Project status
+
+| Area | Status |
+|---|---|
+| Protocol spec, Python reference, server, owner CLI | ✅ implemented and tested here (126 tests) |
+| Portable C core (crypto, ratchet, advertisement, ECIES, mesh) | ✅ byte-identical to Python on 659 vector checks; ASan/UBSan with gcc and clang in CI |
+| Tag firmware (ESP32-C3), relay/gateway firmware (ESP32) | ✅ builds with ESP-IDF v5.2.2 in CI (both crypto backends) · ⏳ never run on hardware |
+| Mesh routing, indoor positioning, anti-stalking | 🧪 simulated only, with simple radio models (see [Results](#results-all-on-the-host-all-simulated)) |
+| Range, battery life, real positioning accuracy | ⏳ needs hardware (see [Hardware validation](#hardware-validation--todo-for-the-author)) |
+| Owner mobile app, presence beacon sender | ⏳ not started (the CLI prints presence payloads) |
+| UWB (DW3000) last-metre finding | 🧪 design, interface header and tested maths only |
+
+---
+
+## How it works
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as Tag (ESP32-C3)
+    participant R as Relay (ESP32, fixed x,y)
+    participant M as Mesh (ESP-NOW hops)
+    participant G as Gateway (ESP32 + serial)
+    participant S as Server (HTTP + sqlite)
+    participant O as Owner CLI
+    Note over T: P_i = X25519(d_i, 9), d_i from the HKDF ratchet, new every 15 min
+    T-)R: BLE legacy adv: addr = P_i[0..5], payload = status + P_i[6..31]
+    Note over R: fresh e, S = X25519(e, P_i), key and nonce = HKDF(S, E + P_i)
+    R->>M: REPORT frame (12 B header + 108 B envelope), TTL 10
+    M->>G: forwarded only by nodes closer to a gateway (gradient)
+    G--)M: passive ack / gateway ACK, beacons carry mesh time
+    G->>S: upload envelope, indexed by SHA-256(P_i)
+    O->>S: POST /v1/query with SHA-256(P_i) of derivable epochs + decoys
+    S-->>O: matching envelopes (opaque to the server)
+    Note over O: derive d_i, decrypt, trilaterate on relay positions, SVG map
+```
+
+<p align="center">
+  <img src="docs/assets/byte_layout.svg" alt="Byte layout of the 6-byte BLE address, the 31-byte advertisement and the 108-byte encrypted report envelope" width="100%"><br>
+  <sub>Wire formats drawn from the real bytes that <code>meshfind.adv.encode()</code> and <code>meshfind.report.seal()</code> produce for a fixed demo key.</sub>
+</p>
+
+meshfind combines protocol design, cryptography and hardware in one project:
 
 - **its own protocol**: X25519 rotating keys from a one-way HKDF ratchet;
   a key split across the BLE address and payload so it fits in one 31-byte
@@ -34,9 +124,7 @@ project:
 > the open-source **OpenHaystack** project. meshfind is a separate
 > protocol and is not compatible with Apple's network.
 
----
-
-## Architecture
+### Architecture
 
 ```
    ┌──────────┐  BLE legacy adv, every 1-8 s
@@ -72,7 +160,7 @@ project:
 | `vectors/meshfind_vectors.json` | Shared test vectors, generated by Python and checked by Python and C |
 | `docs/` | [PROTOCOL.md](docs/PROTOCOL.md), [THREAT_MODEL.md](docs/THREAT_MODEL.md), [UWB.md](docs/UWB.md) |
 
-## Protocol summary
+### Protocol summary
 
 The full specification is in [docs/PROTOCOL.md](docs/PROTOCOL.md).
 
@@ -109,7 +197,7 @@ The full specification is in [docs/PROTOCOL.md](docs/PROTOCOL.md).
   scanner-side detector stitches rotations by gap, RSSI and rotation phase,
   then alerts on long, multi-place co-travel.
 
-## Threat model summary
+### Threat model summary
 
 The full analysis is in [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md).
 
@@ -125,6 +213,9 @@ The full analysis is in [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md).
 
 ## Build, run, test
 
+<details>
+<summary><b>Python, C core and firmware build commands</b></summary>
+
 ### Python (reference, server, owner CLI)
 
 ```bash
@@ -137,8 +228,8 @@ End-to-end simulation (building, mesh, server, owner):
 
 ```bash
 python -m meshfind simulate --seed 3 --svg sim.svg
-# tag at (...) m; N relays heard it; N reports reached the gateway over the mesh
-# owner estimate (trilateration): (...) m, error ~1 m
+# tag at (12.9, 16.1) m; 24 relays heard it; 24 reports reached the gateway over the mesh
+# owner estimate (trilateration): (15.0, 15.3) m, error 2.28 m
 ```
 
 Real-world flow:
@@ -176,40 +267,41 @@ gcc and clang under ASan and UBSan, and builds the tag (esp32c3) and the
 relay (esp32, both crypto backends) with `espressif/esp-idf-ci-action`
 (IDF v5.2.2).
 
+</details>
+
 ## Results (all on the host, all simulated)
 
 | Test / experiment | Result |
 |---|---|
 | Python test suite (`python -m pytest -q`) | **126 passed** on Windows 10, Python 3.12 (includes building and running the C core) |
 | C core vs Python vectors (`tools/host_test.py`, zig cc 0.17) | **659 checks, 0 failures**: RFC 7748, 8439 and 5869 vectors, ratchet, advertisements, presence, ECIES seal and open (byte-identical), tamper rejection at every byte, mesh frames, forwarding table, C mesh simulation |
-| Mesh: 40 random nodes, 2 gateways, unit-disc radio, 20 topologies × 38 reports | delivery **99.87 %** at 10 % per-link loss, **99.61 %** at 20 %, **99.08 %** at 30 % (no collision model) |
+| Mesh: 40 random nodes, 2 gateways, unit-disc radio, 20 topologies × 38 reports | delivery **99.87 %** at 10 % per-link loss, **99.61 %** at 20 %, **99.08 %** at 30 % (no collision model); plot below |
 | Indoor positioning: 50 × 30 m floor, relays on a 10 m grid, 4 dB shadowing, 100 random tag positions, through the full mesh and server path | matched TX power: median **1.13 m**, p90 2.42 m. Tag 6 dB weaker than modelled: median 2.16 m, p90 13.9 m. Tag 6 dB stronger: median 1.41 m, p90 2.91 m. |
 | Anti-stalking: 200 simulated victim days | rotating stalker detected **200/200**. Spurious alerts on **9/200** days without a stalker (a stranger who walks with the victim for 20 minutes can be stitched to a café tag). |
 | UWB maths | DS-TWR error under 1 cm with ±40 ppm clocks; SS-TWR off by metres |
+
+<p align="center">
+  <img src="docs/assets/mesh_delivery.png" alt="Mesh delivery ratio versus per-link loss, 40 nodes, 2 gateways, 20 random topologies" width="720"><br>
+  <sub>Delivery vs per-link loss from <code>meshfind.mesh.MeshSimulator</code> (same setup as <code>tests/test_mesh.py</code>, 20 seeds).
+  One topology misses 1 of 38 reports even at 0 % loss, so the band does not reach 100 %.
+  Generated by <a href="docs/assets/make_figures.py"><code>docs/assets/make_figures.py</code></a>.</sub>
+</p>
 
 The radio models are simple: log-distance path loss with Gaussian shadowing
 for BLE, and a unit disc with i.i.d. loss for ESP-NOW. Real buildings have
 walls, multipath and body shadowing, so **expect worse numbers in the field**.
 
-## Honest status
-
-| Component | State |
-|---|---|
-| Protocol spec, Python reference, server, CLI, simulators | Implemented and tested on the host |
-| Portable C core (crypto, ratchet, advertisement, ECIES, mesh) | Implemented, warning-clean under `-Wall -Wextra -Wpedantic -Wconversion -Werror`, matches Python byte for byte on the host |
-| Tag firmware (ESP32-C3) | Written against the ESP-IDF 5.2 NimBLE API. Checked here only by compiling against stub headers. **Never built with ESP-IDF on this machine and never run on hardware.** CI is set up to build it but has not been observed running. |
-| Relay and gateway firmware (ESP32) | Same as the tag |
-| mbedTLS backend | Written. Not built or run anywhere yet. |
-| Owner mobile app / presence beacon sender | Not started. The CLI prints presence payloads. |
-| UWB | Design, interface header, and tested maths only |
-| Range, battery life, real positioning accuracy | **Unmeasured.** See below. |
-
 ## Hardware validation / TODO for the author
 
-Nothing in this section has been done. Every table is empty on purpose:
-fill in real measurements.
+> [!NOTE]
+> ⏳ **Nothing below has been run on real hardware yet.** Every table is empty on purpose and is to be
+> filled with real measurements only. The firmware **builds** in CI (ESP-IDF v5.2.2), but its behaviour
+> on a target is untested.
 
-**1. Builds**
+<details>
+<summary><b>Step-by-step bench plan with empty result tables (8 steps)</b></summary>
+
+**1. Builds** (CI already builds all three; record the app sizes from a local build)
 ```bash
 cd firmware/tag   && idf.py set-target esp32c3 build   # record binary size
 cd firmware/relay && idf.py set-target esp32 build
@@ -286,6 +378,8 @@ while carrying a tag (and while not carrying one), then run
 | carrying a separated tag | | | |
 | no tag (false alarms) | | | |
 
+</details>
+
 ## Roadmap
 
 1. **Hardware bring-up**: everything in the section above.
@@ -305,6 +399,11 @@ while carrying a tag (and while not carrying one), then run
 9. UWB DW3000 driver, responder and initiator ([docs/UWB.md](docs/UWB.md)).
 10. Multi-floor positioning (per-floor fits, then floor selection by
     strongest-relay vote).
+
+## Contributing, security, citation
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Please report weaknesses in the protocol or the implementation
+privately, as described in [SECURITY.md](SECURITY.md). To cite meshfind, see [CITATION.cff](CITATION.cff).
 
 ## License
 

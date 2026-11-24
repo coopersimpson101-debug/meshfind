@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="507" viewBox="0 0 720 507" font-family="sans-serif" font-size="12">
+<rect width="100%" height="100%" fill="#fafafa"/>
+<text x="20" y="24" font-size="16">meshfind simulated building</text>
+<text x="20" y="42" fill="#666">1 m = 12.1 px; circles: relay sightings (darker = stronger RSSI); x = estimate; + = truth</text>
+<rect x="53.4" y="447.7" width="6" height="6" fill="#bbb"/>
+<rect x="174.9" y="447.7" width="6" height="6" fill="#bbb"/>
+<rect x="296.3" y="447.7" width="6" height="6" fill="#bbb"/>
+<rect x="417.7" y="447.7" width="6" height="6" fill="#bbb"/>
+<rect x="539.1" y="447.7" width="6" height="6" fill="#bbb"/>
+<rect x="660.6" y="447.7" width="6" height="6" fill="#bbb"/>
+<rect x="53.4" y="326.3" width="6" height="6" fill="#bbb"/>
+<rect x="174.9" y="326.3" width="6" height="6" fill="#bbb"/>
+<rect x="296.3" y="326.3" width="6" height="6" fill="#bbb"/>
+<rect x="417.7" y="326.3" width="6" height="6" fill="#bbb"/>
+<rect x="539.1" y="326.3" width="6" height="6" fill="#bbb"/>
+<rect x="660.6" y="326.3" width="6" height="6" fill="#bbb"/>
+<rect x="53.4" y="204.9" width="6" height="6" fill="#bbb"/>
+<rect x="174.9" y="204.9" width="6" height="6" fill="#bbb"/>
+<rect x="296.3" y="204.9" width="6" height="6" fill="#bbb"/>
+<rect x="417.7" y="204.9" width="6" height="6" fill="#bbb"/>
+<rect x="539.1" y="204.9" width="6" height="6" fill="#bbb"/>
+<rect x="660.6" y="204.9" width="6" height="6" fill="#bbb"/>
+<rect x="53.4" y="83.4" width="6" height="6" fill="#bbb"/>
+<rect x="174.9" y="83.4" width="6" height="6" fill="#bbb"/>
+<rect x="296.3" y="83.4" width="6" height="6" fill="#bbb"/>
+<rect x="417.7" y="83.4" width="6" height="6" fill="#bbb"/>
+<rect x="539.1" y="83.4" width="6" height="6" fill="#bbb"/>
+<rect x="660.6" y="83.4" width="6" height="6" fill="#bbb"/>
+<circle cx="56.4" cy="450.7" r="7" fill="#1f6feb" fill-opacity="0.26"><title>node 20480 rssi -87</title></circle>
+<circle cx="56.4" cy="329.3" r="7" fill="#1f6feb" fill-opacity="0.28"><title>node 20486 rssi -86</title></circle>
+<circle cx="177.9" cy="450.7" r="7" fill="#1f6feb" fill-opacity="0.32"><title>node 20481 rssi -84</title></circle>
+<circle cx="299.3" cy="450.7" r="7" fill="#1f6feb" fill-opacity="0.30"><title>node 20482 rssi -85</title></circle>
+<circle cx="177.9" cy="329.3" r="7" fill="#1f6feb" fill-opacity="0.48"><title>node 20487 rssi -76</title></circle>
+<circle cx="56.4" cy="207.9" r="7" fill="#1f6feb" fill-opacity="0.24"><title>node 20492 rssi -88</title></circle>
+<circle cx="542.1" cy="450.7" r="7" fill="#1f6feb" fill-opacity="0.26"><title>node 20484 rssi -87</title></circle>
+<circle cx="420.7" cy="207.9" r="7" fill="#1f6feb" fill-opacity="0.30"><title>node 20495 rssi -85</title></circle>
+<circle cx="299.3" cy="329.3" r="7" fill="#1f6feb" fill-opacity="0.42"><title>node 20488 rssi -79</title></circle>
+<circle cx="177.9" cy="207.9" r="7" fill="#1f6feb" fill-opacity="0.50"><title>node 20493 rssi -75</title></circle>
+<circle cx="299.3" cy="207.9" r="7" fill="#1f6feb" fill-opacity="0.40"><title>node 20494 rssi -80</title></circle>
+<circle cx="420.7" cy="450.7" r="7" fill="#1f6feb" fill-opacity="0.26"><title>node 20483 rssi -87</title></circle>
+<circle cx="663.6" cy="450.7" r="7" fill="#1f6feb" fill-opacity="0.24"><title>node 20485 rssi -88</title></circle>
+<circle cx="299.3" cy="86.4" r="7" fill="#1f6feb" fill-opacity="0.32"><title>node 20500 rssi -84</title></circle>
+<circle cx="56.4" cy="86.4" r="7" fill="#1f6feb" fill-opacity="0.28"><title>node 20498 rssi -86</title></circle>
+<circle cx="663.6" cy="329.3" r="7" fill="#1f6feb" fill-opacity="0.24"><title>node 20491 rssi -88</title></circle>
+<circle cx="542.1" cy="329.3" r="7" fill="#1f6feb" fill-opacity="0.22"><title>node 20490 rssi -89</title></circle>
+<circle cx="663.6" cy="207.9" r="7" fill="#1f6feb" fill-opacity="0.22"><title>node 20497 rssi -89</title></circle>
+<circle cx="542.1" cy="207.9" r="7" fill="#1f6feb" fill-opacity="0.24"><title>node 20496 rssi -88</title></circle>
+<circle cx="420.7" cy="86.4" r="7" fill="#1f6feb" fill-opacity="0.28"><title>node 20501 rssi -86</title></circle>
+<circle cx="542.1" cy="86.4" r="7" fill="#1f6feb" fill-opacity="0.26"><title>node 20502 rssi -87</title></circle>
+<circle cx="663.6" cy="86.4" r="7" fill="#1f6feb" fill-opacity="0.20"><title>node 20503 rssi -90</title></circle>
+<circle cx="177.9" cy="86.4" r="7" fill="#1f6feb" fill-opacity="0.36"><title>node 20499 rssi -82</title></circle>
+<circle cx="420.7" cy="329.3" r="7" fill="#1f6feb" fill-opacity="0.34"><title>node 20489 rssi -83</title></circle>
+<path d="M205.6 254.6h16M213.6 246.6v16" stroke="#2da44e" stroke-width="3"/>
+<path d="M232.1 258.4l14 14M246.1 258.4l-14 14" stroke="#cf222e" stroke-width="3"/>
+</svg>

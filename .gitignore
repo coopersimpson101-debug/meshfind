@@ -28,3 +28,6 @@ firmware/*/sdkconfig
 firmware/*/sdkconfig.old
 firmware/*/managed_components/
 firmware/*/dependencies.lock
+
+# docs images are generated on purpose (docs/assets/make_figures.py)
+!docs/assets/*.svg

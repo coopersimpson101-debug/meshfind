@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="180" viewBox="0 0 980 180">
+<rect width="980" height="180" rx="10" fill="#0d1117" stroke="#30363d"/>
+<rect width="980" height="34" rx="10" fill="#161b22"/><rect y="24" width="980" height="10" fill="#161b22"/>
+<circle cx="20" cy="17" r="6" fill="#ff5f56"/><circle cx="40" cy="17" r="6" fill="#ffbd2e"/><circle cx="60" cy="17" r="6" fill="#27c93f"/>
+<text x="490.0" y="22" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" text-anchor="middle">meshfind simulate</text>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">
+<text x="20" y="60" fill="#e6edf3"><tspan fill="#A78BFA">$</tspan> python -m meshfind simulate --seed 3 --svg docs/assets/sim_map.svg</text>
+<text x="20" y="82" fill="#e6edf3">tag at (12.9, 16.1) m; 24 relays heard it; 24 reports reached the gateway over the mesh</text>
+<text x="20" y="104" fill="#A78BFA">owner estimate (trilateration): (15.0, 15.3) m, error 2.28 m</text>
+<text x="20" y="126" fill="#e6edf3">wrote docs/assets/sim_map.svg</text>
+<text x="20" y="148" fill="#A78BFA">$ <tspan fill="#e6edf3">_</tspan></text>
+</g>
+</svg>
