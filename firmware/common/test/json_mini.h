@@ -101,6 +101,16 @@ static jnode *jvalue(void)
     }
 }
 
+static void jfree(jnode *n)
+{
+    while (n) {
+        jnode *next = n->next;
+        jfree(n->child);
+        free(n);
+        n = next;
+    }
+}
+
 static jnode *jparse(const char *src)
 {
     jp = src;

@@ -472,5 +472,7 @@ int main(int argc, char **argv)
     test_mesh_random(0.2, 2);
     test_mesh_random(0.3, 3);
     printf("%d checks, %d failures\n", g_checks, g_fail);
+    jfree(v);
+    free(src);
     return g_fail ? 1 : 0;
 }
