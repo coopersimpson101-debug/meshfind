@@ -11,8 +11,8 @@ jobs:
       matrix:
         python-version: ["3.10", "3.12"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[test]"
@@ -29,7 +29,7 @@ jobs:
       matrix:
         cc: [gcc, clang]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build + run firmware/common against the vectors (ASan/UBSan)
         run: make -C firmware/common/test CC=${{ matrix.cc }} SAN=1
 
@@ -49,7 +49,7 @@ jobs:
             target: esp32
             defaults: sdkconfig.defaults;../sdkconfig.defaults.mbedtls
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: idf.py build (${{ matrix.project }}, ${{ matrix.defaults }})
         uses: espressif/esp-idf-ci-action@v1
         with:
