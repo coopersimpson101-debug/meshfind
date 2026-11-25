@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/coopersimpson101-debug/meshfind/actions/workflows/ci.yml"><img src="https://github.com/coopersimpson101-debug/meshfind/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+[![Release](https://img.shields.io/github/v/release/coopersimpson101-debug/meshfind?color=A78BFA&label=release)](https://github.com/coopersimpson101-debug/meshfind/releases/latest)
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/python-3.10%20%7C%203.12-3776AB?logo=python&logoColor=white" alt="Python 3.10 | 3.12">
   <img src="https://img.shields.io/badge/C99-portable%20core-555555" alt="C99 core">
