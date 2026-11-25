@@ -196,6 +196,13 @@ static void test_adv(const jnode *v)
         uint32_t ms = mf_adv_interval_ms((int)jint(e, "percent"), jint(e, "separated") != 0);
         CHECK(ms == (uint32_t)jint(e, "ms"), "adv interval %u", ms);
     }
+    /* Duty-cycle helpers (analytical model; not part of the vector file). */
+    CHECK(mf_adv_sleep_ms(2000, 1) == 1999, "adv sleep");
+    CHECK(mf_adv_sleep_ms(1000, 1000) == 0, "adv sleep full tx");
+    CHECK(mf_adv_avg_current_ua(2000, 10000, 200, 10) == 249, "adv avg current");
+    CHECK(mf_adv_avg_current_ua(1000, 5000, 100, 1000) == 5000, "adv continuous tx");
+    CHECK(mf_presence_avg_current_ua(60, 50, 20000, 249) == 265, "presence avg current");
+    CHECK(mf_presence_avg_current_ua(0, 50, 20000, 249) == 249, "presence period 0");
 }
 
 static void test_report(const jnode *v)

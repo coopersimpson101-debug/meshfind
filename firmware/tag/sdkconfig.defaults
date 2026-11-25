@@ -9,3 +9,18 @@ CONFIG_BT_NIMBLE_ROLE_OBSERVER=y
 CONFIG_BT_NIMBLE_MAX_CONNECTIONS=1
 CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
 CONFIG_FREERTOS_HZ=1000
+
+# Power management: light sleep between advertising events (ESP-IDF NimBLE
+# power_save pattern). Default LP clock is the main XTAL so boards without an
+# external 32 kHz crystal still boot; for ~10x lower sleep current on boards
+# that have one, also pass sdkconfig.defaults.ext32k (see README).
+CONFIG_PM_ENABLE=y
+CONFIG_FREERTOS_USE_TICKLESS_IDLE=y
+CONFIG_FREERTOS_IDLE_TIME_BEFORE_SLEEP=3
+
+# Bluetooth modem sleep between ADV TX events
+CONFIG_BT_CTRL_MODEM_SLEEP=y
+CONFIG_BT_CTRL_MODEM_SLEEP_MODE_1=y
+CONFIG_BT_CTRL_LPCLK_SEL_MAIN_XTAL=y
+CONFIG_BT_CTRL_MAIN_XTAL_PU_DURING_LIGHT_SLEEP=y
+CONFIG_ESP_PHY_MAC_BB_PD=y

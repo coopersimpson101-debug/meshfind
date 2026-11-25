@@ -59,6 +59,21 @@ def test_battery_aware_interval():
         assert vals == sorted(vals)
 
 
+def test_duty_cycled_adv_sleep_and_current_model():
+    assert adv.adv_sleep_ms(2000, 1) == 1999
+    assert adv.adv_sleep_ms(1000, 1000) == 0
+    assert adv.adv_sleep_ms(0, 1) == 0
+    # 10 ms TX at 10 mA, 1990 ms sleep at 200 uA, 2 s interval -> ~249 uA
+    assert adv.adv_avg_current_ua(2000, 10_000, 200, tx_ms=10) == 249
+    # Continuous TX equals tx current
+    assert adv.adv_avg_current_ua(1000, 5000, 100, tx_ms=1000) == 5000
+    # Presence: 50 ms scan at 20 mA every 60 s on a 249 uA base
+    assert adv.presence_avg_current_ua(60, 50, 20_000, 249) == 265
+    # Longer scan raises average; zero period keeps the base
+    assert adv.presence_avg_current_ua(60, 300, 20_000, 249) > adv.presence_avg_current_ua(60, 50, 20_000, 249)
+    assert adv.presence_avg_current_ua(0, 50, 20_000, 249) == 249
+
+
 def test_presence_beacon_roundtrip_and_never_parses_as_tag():
     from meshfind import ratchet
     pk = ratchet.presence_key(bytes(range(32)))

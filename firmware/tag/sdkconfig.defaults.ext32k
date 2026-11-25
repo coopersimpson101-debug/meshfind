@@ -1,0 +1,9 @@
+# Optional overlay for ESP32-C3 boards with an external 32 kHz crystal.
+# Use with:
+#   idf.py -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.ext32k" build
+#
+# Typical light-sleep floor drops from ~2 mA (main XTAL) to ~140 uA (Espressif
+# NimBLE power_save figures). Do not enable on boards without the crystal.
+
+CONFIG_BT_CTRL_LPCLK_SEL_EXT_32K_XTAL=y
+CONFIG_RTC_CLK_SRC_EXT_CRYS=y
