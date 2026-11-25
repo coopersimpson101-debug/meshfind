@@ -165,9 +165,17 @@ static void wifi_espnow_init(void)
 static void gw_deliver(void *ctx, const uint8_t env[MF_ENVELOPE_LEN])
 {
     (void)ctx;
-    char line[8 + 2 * MF_ENVELOPE_LEN];
-    int o = snprintf(line, sizeof line, "MFRPT ");
-    for (int i = 0; i < MF_ENVELOPE_LEN; i++) o += snprintf(line + o, sizeof line - (size_t)o, "%02x", env[i]);
+    static const char HEX[] = "0123456789abcdef";
+    static const char PREFIX[] = "MFRPT ";
+    char line[sizeof PREFIX - 1 + 2 * MF_ENVELOPE_LEN + 1];
+    _Static_assert(sizeof line == sizeof PREFIX + 2 * MF_ENVELOPE_LEN, "gateway line buffer size");
+    memcpy(line, PREFIX, sizeof PREFIX - 1);
+    char *o = line + sizeof PREFIX - 1;
+    for (size_t i = 0; i < MF_ENVELOPE_LEN; i++) {
+        *o++ = HEX[env[i] >> 4];
+        *o++ = HEX[env[i] & 0x0f];
+    }
+    *o = '\0';
     puts(line);
     fflush(stdout);
 }
