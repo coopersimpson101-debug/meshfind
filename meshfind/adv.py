@@ -115,6 +115,38 @@ def adv_interval_ms(battery_percent: int, separated: bool) -> int:
     return base
 
 
+def adv_sleep_ms(interval_ms: int, tx_ms: int = 1) -> int:
+    """Idle time between advertising events in a duty-cycled schedule."""
+    if interval_ms <= 0:
+        return 0
+    if tx_ms >= interval_ms:
+        return 0
+    return interval_ms - tx_ms
+
+
+def adv_avg_current_ua(interval_ms: int, tx_ua: int, sleep_ua: int, tx_ms: int = 1) -> int:
+    """Modelled average current for duty-cycled advertising (not a measurement).
+
+    ``tx_ua`` is the current while the radio transmits one ADV_NONCONN_IND;
+    ``sleep_ua`` is the light-sleep / modem-sleep floor between events.
+    """
+    if interval_ms <= 0:
+        return tx_ua
+    tx_ms = min(tx_ms, interval_ms)
+    sleep_ms = interval_ms - tx_ms
+    return (tx_ua * tx_ms + sleep_ua * sleep_ms + interval_ms // 2) // interval_ms
+
+
+def presence_avg_current_ua(period_s: int, scan_ms: int, scan_ua: int, base_ua: int) -> int:
+    """Modelled average current with a short presence-scan window each period."""
+    if period_s <= 0:
+        return base_ua
+    period_ms = period_s * 1000
+    scan_ms = min(scan_ms, period_ms)
+    idle_ms = period_ms - scan_ms
+    return (scan_ua * scan_ms + base_ua * idle_ms + period_ms // 2) // period_ms
+
+
 # --------------------------------------------------------------------------
 # Owner-presence beacon (owner device -> tag). Keeps the tag in near-owner
 # mode and lets it re-synchronise its clock from an authenticated token.

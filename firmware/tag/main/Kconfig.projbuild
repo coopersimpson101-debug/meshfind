@@ -34,6 +34,14 @@ menu "meshfind tag"
         int "Seconds between short scans for the owner-presence beacon (0 = never)"
         default 60
 
+    config MESHFIND_TAG_PRESENCE_SCAN_MS
+        int "Owner-presence scan window in milliseconds (duty-cycled)"
+        default 50
+        range 10 1000
+        help
+            Advertising is paused for this window, then resumed. Keep it short:
+            a 50 ms scan every 60 s adds only tens of uA to the modelled average.
+
     config MESHFIND_TAG_BATTERY_ADC_CHANNEL
         int "ADC1 channel wired to the battery divider (-1 = no battery sensing)"
         default -1

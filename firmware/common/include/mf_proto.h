@@ -90,6 +90,13 @@ int mf_adv_decode(const uint8_t addr[6], const uint8_t *payload, size_t len, mf_
 uint8_t mf_battery_level(int percent);
 uint32_t mf_adv_interval_ms(int percent, bool separated);
 
+/* Duty-cycled advertising / presence-scan planning helpers.
+ * These are analytical models for firmware scheduling and host tests — not
+ * hardware measurements. See mf_adv_avg_current_ua(). */
+uint32_t mf_adv_sleep_ms(uint32_t interval_ms, uint32_t tx_ms);
+uint32_t mf_adv_avg_current_ua(uint32_t interval_ms, uint32_t tx_ua, uint32_t sleep_ua, uint32_t tx_ms);
+uint32_t mf_presence_avg_current_ua(uint32_t period_s, uint32_t scan_ms, uint32_t scan_ua, uint32_t base_ua);
+
 /* ---- report ---- */
 typedef struct {
     uint8_t version;

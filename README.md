@@ -47,7 +47,7 @@ no phone vendor and no internet connection on the tag side.**
 - 🛡️ **Anti-stalking**: a separated mode on the tag, plus a scanner-side detector that stitches rotating keys.
   It caught the stalker on **200/200** simulated days.
 - 🧪 **Two implementations, one truth**: the Python reference and the portable C99 firmware core agree byte for
-  byte on a shared vector file (**659 C checks**, **126 Python tests**). CI runs the C core under ASan/UBSan.
+  byte on a shared vector file (**665 C checks**, **127 Python tests**). CI runs the C core under ASan/UBSan.
 - 🔧 **ESP-IDF firmware** for the tag (ESP32-C3) and the relay/gateway (ESP32, reference or mbedTLS crypto),
   built in CI on every push.
 
@@ -56,7 +56,7 @@ no phone vendor and no internet connection on the tag side.**
 ```bash
 git clone https://github.com/coopersimpson101-debug/meshfind && cd meshfind
 pip install -e ".[test]"
-python -m pytest -q                                   # 126 tests, incl. the C core vs the Python vectors
+python -m pytest -q                                   # 127 tests, incl. the C core vs the Python vectors
 python -m meshfind simulate --seed 3 --svg map.svg    # tag -> relays -> mesh -> server -> owner
 python tools/host_test.py                             # C core on the host (uses $CC, ziglang or cc)
 ```
@@ -65,9 +65,9 @@ python tools/host_test.py                             # C core on the host (uses
 
 | Area | Status |
 |---|---|
-| Protocol spec, Python reference, server, owner CLI | ✅ implemented and tested here (126 tests) |
-| Portable C core (crypto, ratchet, advertisement, ECIES, mesh) | ✅ byte-identical to Python on 659 vector checks; ASan/UBSan with gcc and clang in CI |
-| Tag firmware (ESP32-C3), relay/gateway firmware (ESP32) | ✅ builds with ESP-IDF v5.2.2 in CI (both crypto backends) · ⏳ never run on hardware |
+| Protocol spec, Python reference, server, owner CLI | ✅ implemented and tested here (127 tests) |
+| Portable C core (crypto, ratchet, advertisement, ECIES, mesh) | ✅ byte-identical to Python on 665 C checks (incl. duty-cycle helpers); ASan/UBSan with gcc and clang in CI |
+| Tag firmware (ESP32-C3), relay/gateway firmware (ESP32) | ✅ builds with ESP-IDF v5.2.2 in CI (both crypto backends) · ✅ tag light-sleep + duty-cycled presence scans in firmware · ⏳ never run on hardware |
 | Mesh routing, indoor positioning, anti-stalking | 🧪 simulated only, with simple radio models (see [Results](#results-all-on-the-host-all-simulated)) |
 | Range, battery life, real positioning accuracy | ⏳ needs hardware (see [Hardware validation](#hardware-validation--todo-for-the-author)) |
 | Owner mobile app, presence beacon sender | ⏳ not started (the CLI prints presence payloads) |
@@ -274,8 +274,8 @@ relay (esp32, both crypto backends) with `espressif/esp-idf-ci-action`
 
 | Test / experiment | Result |
 |---|---|
-| Python test suite (`python -m pytest -q`) | **126 passed** on Windows 10, Python 3.12 (includes building and running the C core) |
-| C core vs Python vectors (`tools/host_test.py`, zig cc 0.17) | **659 checks, 0 failures**: RFC 7748, 8439 and 5869 vectors, ratchet, advertisements, presence, ECIES seal and open (byte-identical), tamper rejection at every byte, mesh frames, forwarding table, C mesh simulation |
+| Python test suite (`python -m pytest -q`) | **127 passed** on Windows 10, Python 3.12 (includes building and running the C core) |
+| C core vs Python vectors (`tools/host_test.py`, zig cc 0.17) | **665 checks, 0 failures**: RFC 7748, 8439 and 5869 vectors, ratchet, advertisements, presence, duty-cycle current model, ECIES seal and open (byte-identical), tamper rejection at every byte, mesh frames, forwarding table, C mesh simulation |
 | Mesh: 40 random nodes, 2 gateways, unit-disc radio, 20 topologies × 38 reports | delivery **99.87 %** at 10 % per-link loss, **99.61 %** at 20 %, **99.08 %** at 30 % (no collision model); plot below |
 | Indoor positioning: 50 × 30 m floor, relays on a 10 m grid, 4 dB shadowing, 100 random tag positions, through the full mesh and server path | matched TX power: median **1.13 m**, p90 2.42 m. Tag 6 dB weaker than modelled: median 2.16 m, p90 13.9 m. Tag 6 dB stronger: median 1.41 m, p90 2.91 m. |
 | Anti-stalking: 200 simulated victim days | rotating stalker detected **200/200**. Spurious alerts on **9/200** days without a stalker (a stranger who walks with the victim for 20 minutes can be stitched to a café tag). |
@@ -336,7 +336,16 @@ epoch boundary.
 | interval matches battery table | |
 | separated mode after timeout (set `SEPARATED_AFTER_MIN=2` for the test) | |
 
-**4. Tag current draw** (PPK2 or similar, 3.0 V):
+**4. Tag current draw** (PPK2 or similar, 3.0 V). Firmware already enables
+automatic light sleep between ADV events and duty-cycled presence scans
+(default 50 ms every 60 s). Leave cells empty until measured — do not fill
+from `adv.adv_avg_current_ua` / simulation. Optional lower floor on boards
+with a 32 kHz crystal:
+
+```bash
+cd firmware/tag
+idf.py -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.ext32k" build flash
+```
 
 | mode | interval | avg current | projected CR2032 / 1000 mAh LiPo life |
 |---|---|---|---|
@@ -386,8 +395,9 @@ while carrying a tag (and while not carrying one), then run
 1. **Hardware bring-up**: everything in the section above.
 2. Provisioning over serial or BLE, so seeds never live in an image; flash
    encryption guide.
-3. Tag power: light sleep between advertising events, and duty-cycled
-   presence scans.
+3. Tag power measurements: firmware already light-sleeps between advertising
+   events and duty-cycles presence scans; fill the current-draw table on
+   hardware (main XTAL default, or `sdkconfig.defaults.ext32k` when present).
 4. Signed gateway beacons (authenticated mesh time); opt-in private relay
    attestation (a relay signature inside the ciphertext); automatic node
    whitelisting for fixed sites.

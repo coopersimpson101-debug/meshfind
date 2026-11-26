@@ -159,6 +159,15 @@ bytes.
 Separated tags advertise twice as often, but never faster than 1 s, which
 makes them easier to find and easier for victims to notice.
 
+**Firmware power (not a wire format).** The tag firmware duty-cycles the
+radio around these intervals: automatic light sleep between advertising
+events (ESP-IDF `esp_pm` + BT modem sleep) and a short owner-presence scan
+window (`MESHFIND_TAG_PRESENCE_SCAN_MS`, default 50 ms) every
+`MESHFIND_TAG_PRESENCE_SCAN_PERIOD_S` seconds. Analytical helpers
+`mf_adv_avg_current_ua` / `adv.adv_avg_current_ua` model the resulting
+average current for planning; measured values belong in the README hardware
+table only after a PPK2 (or similar) run.
+
 ## 5. Encrypted report (ECIES)
 
 A relay that hears `P` builds:

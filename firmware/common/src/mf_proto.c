@@ -213,6 +213,36 @@ uint32_t mf_adv_interval_ms(int percent, bool separated)
     return ms;
 }
 
+uint32_t mf_adv_sleep_ms(uint32_t interval_ms, uint32_t tx_ms)
+{
+    if (interval_ms == 0) return 0;
+    if (tx_ms >= interval_ms) return 0;
+    return interval_ms - tx_ms;
+}
+
+uint32_t mf_adv_avg_current_ua(uint32_t interval_ms, uint32_t tx_ua, uint32_t sleep_ua, uint32_t tx_ms)
+{
+    uint32_t sleep_ms;
+    uint64_t sum;
+    if (interval_ms == 0) return tx_ua;
+    if (tx_ms > interval_ms) tx_ms = interval_ms;
+    sleep_ms = interval_ms - tx_ms;
+    /* (tx_ua * tx_ms + sleep_ua * sleep_ms) / interval_ms, rounded nearest */
+    sum = (uint64_t)tx_ua * tx_ms + (uint64_t)sleep_ua * sleep_ms;
+    return (uint32_t)((sum + interval_ms / 2) / interval_ms);
+}
+
+uint32_t mf_presence_avg_current_ua(uint32_t period_s, uint32_t scan_ms, uint32_t scan_ua, uint32_t base_ua)
+{
+    uint64_t period_ms, idle_ms, sum;
+    if (period_s == 0) return base_ua;
+    period_ms = (uint64_t)period_s * 1000u;
+    if (scan_ms > period_ms) scan_ms = (uint32_t)period_ms;
+    idle_ms = period_ms - scan_ms;
+    sum = (uint64_t)scan_ua * scan_ms + (uint64_t)base_ua * idle_ms;
+    return (uint32_t)((sum + period_ms / 2) / period_ms);
+}
+
 /* ------------------------------------------------------------------- report */
 
 static void put32(uint8_t *p, uint32_t v) { p[0] = (uint8_t)v; p[1] = (uint8_t)(v >> 8); p[2] = (uint8_t)(v >> 16); p[3] = (uint8_t)(v >> 24); }
